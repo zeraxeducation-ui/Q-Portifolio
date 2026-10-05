@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Q-Portfolio | Quantum Portfolio Optimization</title>
+
+    <meta
+        name="description"
+        content="Constrained portfolio optimization powered by quantum optimization research."
+    >
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="app-shell">
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="topbar">
+
+        <div class="brand">
+            <div class="brand-mark">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <div>
+                <div class="brand-name">Q-PORTFOLIO</div>
+                <div class="brand-sub">QUANTUM OPTIMIZATION LAB</div>
+            </div>
+        </div>
+
+        <div class="system-status">
+            <span class="status-dot"></span>
+            <span>ENGINE READY</span>
+        </div>
+
+    </header>
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="hero">
+
+        <div class="hero-copy">
+
+            <div class="eyebrow">
+                <span>QAOA</span>
+                <span class="eyebrow-line"></span>
+                <span>CONSTRAINED OPTIMIZATION</span>
+            </div>
+
+            <h1>
+                Build a portfolio
+                <span>the quantum way.</span>
+            </h1>
+
+            <p>
+                Formulate portfolio selection as a constrained optimization
+                problem and prepare it for quantum approximate optimization.
+            </p>
+
+        </div>
+
+        <div class="hero-orbit">
+
+            <div class="orbit orbit-1"></div>
+            <div class="orbit orbit-2"></div>
+
+            <div class="quantum-core">
+                <div class="core-symbol">Q</div>
+                <small>QAOA</small>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= MAIN GRID ================= -->
+
+    <main class="workspace">
+
+        <!-- LEFT -->
+
+        <section class="panel configuration-panel">
+
+            <div class="panel-header">
+
+                <div>
+                    <span class="panel-index">01</span>
+                    <h2>Optimization Configuration</h2>
+                </div>
+
+                <span class="live-label">LIVE MODEL</span>
+
+            </div>
+
+
+            <!-- CAPITAL -->
+
+            <div class="control-block">
+
+                <div class="control-heading">
+
+                    <div>
+                        <span class="control-label">INVESTMENT CAPITAL</span>
+                        <span class="control-description">
+                            Total capital available for allocation
+                        </span>
+                    </div>
+
+                    <span class="control-value" id="capitalDisplay">
+                        ₹10,00,000
+                    </span>
+
+                </div>
+
+                <input
+                    type="range"
+                    id="capitalSlider"
+                    min="100000"
+                    max="10000000"
+                    step="50000"
+                    value="1000000"
+                >
+
+                <div class="range-meta">
+                    <span>₹1L</span>
+                    <span>₹1Cr</span>
+                </div>
+
+            </div>
+
+
+            <!-- NUMBER OF ASSETS -->
+
+            <div class="control-block">
+
+                <div class="control-heading">
+
+                    <div>
+                        <span class="control-label">PORTFOLIO SIZE</span>
+                        <span class="control-description">
+                            Number of assets to select
+                        </span>
+                    </div>
+
+                    <span class="control-value" id="assetCountDisplay">
+                        4 assets
+                    </span>
+
+                </div>
+
+                <input
+                    type="range"
+                    id="assetCountSlider"
+                    min="2"
+                    max="8"
+                    step="1"
+                    value="4"
+                >
+
+                <div class="range-meta">
+                    <span>2 assets</span>
+                    <span>8 assets</span>
+                </div>
+
+            </div>
+
+
+            <!-- MAX ALLOCATION -->
+
+            <div class="control-block">
+
+                <div class="control-heading">
+
+                    <div>
+                        <span class="control-label">MAX SINGLE-ASSET ALLOCATION</span>
+                        <span class="control-description">
+                            Upper allocation bound
+                        </span>
+                    </div>
+
+                    <span class="control-value" id="allocationDisplay">
+                        40%
+                    </span>
+
+                </div>
+
+                <input
+                    type="range"
+                    id="allocationSlider"
+                    min="10"
+                    max="100"
+                    step="5"
+                    value="40"
+                >
+
+                <div class="range-meta">
+                    <span>10%</span>
+                    <span>100%</span>
+                </div>
+
+            </div>
+
+
+            <!-- RISK -->
+
+            <div class="control-block">
+
+                <div class="control-heading">
+
+                    <div>
+                        <span class="control-label">RISK PROFILE</span>
+                        <span class="control-description">
+                            Objective risk weighting
+                        </span>
+                    </div>
+
+                    <span class="control-value" id="riskDisplay">
+                        BALANCED
+                    </span>
+
+                </div>
+
+                <div class="risk-selector">
+
+                    <button class="risk-option" data-risk="conservative">
+                        Conservative
+                    </button>
+
+                    <button class="risk-option active" data-risk="balanced">
+                        Balanced
+                    </button>
+
+                    <button class="risk-option" data-risk="aggressive">
+                        Aggressive
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- SECTOR LIMIT -->
+
+            <div class="control-block">
+
+                <div class="control-heading">
+
+                    <div>
+                        <span class="control-label">SECTOR CONCENTRATION</span>
+                        <span class="control-description">
+                            Maximum assets from one sector
+                        </span>
+                    </div>
+
+                    <span class="control-value" id="sectorDisplay">
+                        2
+                    </span>
+
+                </div>
+
+                <input
+                    type="range"
+                    id="sectorSlider"
+                    min="1"
+                    max="4"
+                    step="1"
+                    value="2"
+                >
+
+            </div>
+
+        </section>
+
+
+        <!-- RIGHT -->
+
+        <section class="panel universe-panel">
+
+            <div class="panel-header">
+
+                <div>
+                    <span class="panel-index">02</span>
+                    <h2>Asset Universe</h2>
+                </div>
+
+                <div class="selection-counter">
+                    <span id="selectedCount">0</span>
+                    /
+                    <span id="requiredCount">4</span>
+                </div>
+
+            </div>
+
+
+            <div class="asset-grid" id="assetGrid">
+                <!-- JavaScript injects assets -->
+            </div>
+
+
+            <div class="selection-warning" id="selectionWarning">
+                Select exactly 4 assets to construct the optimization problem.
+            </div>
+
+
+            <button
+                class="optimize-button"
+                id="optimizeButton"
+                disabled
+            >
+
+                <span class="button-icon">⚛</span>
+
+                <span>
+                    PREPARE QUANTUM OPTIMIZATION
+                </span>
+
+                <span class="button-arrow">→</span>
+
+            </button>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= MODEL INSPECTOR ================= -->
+
+    <section class="inspector panel">
+
+        <div class="panel-header">
+
+            <div>
+                <span class="panel-index">03</span>
+                <h2>Optimization Model</h2>
+            </div>
+
+            <span class="model-state" id="modelState">
+                WAITING FOR INPUT
+            </span>
+
+        </div>
+
+
+        <div class="model-grid">
+
+            <div class="metric-card">
+
+                <span class="metric-label">SELECTED VARIABLES</span>
+
+                <strong id="metricVariables">0</strong>
+
+                <small>binary decision variables</small>
+
+            </div>
+
+
+            <div class="metric-card">
+
+                <span class="metric-label">CAPITAL</span>
+
+                <strong id="metricCapital">₹10,00,000</strong>
+
+                <small>optimization budget</small>
+
+            </div>
+
+
+            <div class="metric-card">
+
+                <span class="metric-label">MAX ALLOCATION</span>
+
+                <strong id="metricAllocation">40%</strong>
+
+                <small>single asset bound</small>
+
+            </div>
+
+
+            <div class="metric-card">
+
+                <span class="metric-label">SECTOR LIMIT</span>
+
+                <strong id="metricSector">2</strong>
+
+                <small>assets / sector</small>
+
+            </div>
+
+        </div>
+
+
+        <div class="model-preview">
+
+            <div class="preview-title">
+                CURRENT DECISION MODEL
+            </div>
+
+            <pre id="modelPreview">
+Awaiting portfolio configuration...
+            </pre>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <span>Q-PORTFOLIO / RESEARCH PROTOTYPE</span>
+
+        <span>
+            CLASSICAL MODEL → QUBO → QAOA
+        </span>
+
+    </footer>
+
+</div>
+
+<script src="app.js"></script>
+
+</body>
+</html>
